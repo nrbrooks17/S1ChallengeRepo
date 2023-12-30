@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Web Sprint 1 Challenge</title>
+  <style>
+    .widget {
+      padding: 0 0 0.5rem 0.65rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid black;
+      border-radius: 0.5rem;
+    }
+
+    .widget p {
+      font-size: 0.75rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Web Sprint 1 Challenge </h1>
+  <p>❗ See the script tag for instructions on completing your Challenge</p>
+  <!-- widgets start -->
+  <section class="widget">
+    <p>This widget uses the advancedBatteryCare function</p>
+    <input type="range" min="0" max="100" value="50" id="sliderBattery">
+    <div id="infoBattery">your battery is at 50%</div>
+  </section>
+  <!-- widgets end -->
+
+  <script id="challenge">
+    // In CHALLENGES 1-4 you will write JavaScript functions.
+    // In CHALLENGE 5 you will edit the HTML to add some missing id attributes.
+
+    // ❗ Each function is already scaffolded for you. You will need to fill in each function's parameters and body.
+    // ❗ Do not rename the functions provided, and do not create any other script tags.
+    // ❗ As you go through each challenge, load this file in the browser and debug using the Console.
+    // ❗ All challenges that returns strings must return the EXACT string given in the instructions to pass.
+
+    // 👉 CHALLENGE 1
+    function concatenator(a, b) {
+      let result;
+    if (typeof a !== typeof b) {
+      result = "a and b must be of the same type"
+    } else if ((typeof a !== 'number' && typeof a !== 'string') || (typeof b !== 'number' && typeof b !== 'string')) {
+      result = "a and b must be numbers or strings"
+    } else if (a !== undefined && b !== undefined) {
+      result = a + b  
+    } else {
+      result = "" + a + b
+    }
+    
+     
+    
+      return result
+    }  
+    
+      // 🧠 concatenator takes two arguments named a and b:
+      //    * If a and b are strings, return them concatenated
+      //    * If a and b are numbers, return their sum
+      // 💡 Other conditions that must be met:
+      //    * Both a and b must be of the same type. If they are not the same type, return the string "a and b must be of the same type"
+      //    * a and b can be either numbers or strings. If they are not, return "a and b must be numbers or strings"
+      // ❗ Hint: The order of the conditions in the pseudo-code above and in the actual code is not necessarily the same
+      // ❗ Hint: It's advised to deal with the other conditions first, like arguments being of the wrong type.
+      //          In the real world, these are considered "edge cases".
+    
+
+    // 👉 CHALLENGE 2
+    function falsinessDetector(a, b, c, d, e) {
+      let result;
+      if (a && b && c && d && e) {
+        result = 'all values truthy'
+      }  else if (!a && !b && !c && !d && !e) {
+       result = "all values falsy"
+      } else {
+        result = "some values truthy and some falsy"
+      }
+      return result
+      }
+      
+      // 🧠 falsinessDetector takes five arguments named a, b, c, d, and e which are values of any type:
+      //    * If some values are truthy and some falsy, return the string "some values truthy and some falsy"
+      //    * If all values are falsy, return the string "all values falsy"
+      //    * If all values are truthy, return the string "all values truthy"
+    
+
+    // 👉 CHALLENGE 3
+      function triangleAnalyzer(angleA, angleB, angleC) {
+         const flattenAnglesArray = [].concat(...[angleA, angleB, angleC]);
+         let result;
+      
+      if (flattenAnglesArray.some(angle => typeof angle !== 'number')) {
+        result = "all angles must be numbers";
+      } else if (flattenAnglesArray.every(angle => angle > 0)) {
+        const sumOfAngles = flattenAnglesArray.reduce((sum, angle) => sum + angle, 0);
+
+      if (sumOfAngles !== 180) {
+        result = "angles must total 180";
+      } else if (flattenAnglesArray.some(angle => angle === 90)) {
+        result = "this is a right triangle";
+      } else if (flattenAnglesArray.some(angle => angle > 90)) {
+        result = "this is an obtuse triangle";
+      } else {
+        result = "this is an acute triangle";
+         }
+      } else {
+        result = "all angles must be greater than zero"
+      }
+
+      return result
+    }
+      // 🧠 triangleAnalyzer takes three arguments named angleA, angleB, and angleC:
+      //    * If any angle is 90 degrees, return the string "this is a right triangle"
+      //    * If any angle is over 90 degrees, return the string "this is an obtuse triangle"
+      //    * If all angles are under 90 degrees, return the string "this is an acute triangle"
+      // 💡 Other conditions that must be met:
+      //    * All angles must be of type number. If not, return the string "all angles must be numbers"
+      //    * All angles must be greater than zero. If not, return the string "all angles must be greater than zero"
+      //    * The three angles must add up to 180. If not, return the string "angles must total 180"
+      // ❗ Hint: the order of the conditions in the pseudo-code above and in the actual code is not necessarily the same
+      // ❗ Hint: It's advised to deal with the other conditions first, like arguments being of the wrong type.
+      //          In the real world, these are considered "edge cases".
+          
+
+    // 👉 CHALLENGE 4
+    function advancedBatteryCare(percentage) {
+      let result;
+
+      if (percentage === 0) {
+        result = "congrats, battery dead";
+      } else if (percentage === 100) {
+        result = "congrats, you cooked your battery";
+      } else if (percentage >= 20 && percentage <= 80) {
+        result = "your battery is at " + percentage + "%";
+      } else if (percentage > 80) {
+        result = "please unplug charger";
+      } else if (percentage < 20) {
+        result = "please connect charger";
+      } else {
+        result = "unknown percentage"
+      }
+      
+      return result
+    }
+      // 🧠 advancedBatteryCare takes an argument named percentage that will be a number between 0 and 100 inclusive:
+      //    * If percentage in the range between 20 and 80 inclusive (E.G. 47), return a string like "your battery is at 47%"
+      //    * If percentage over 80, return the string "please unplug charger"
+      //    * If percentage under 20, return the string "please connect charger"
+      //    * If percentage exactly 0, return the string "congrats, battery dead"
+      //    * If percentage exactly 100, return the string "congrats, you cooked your battery"
+    
+
+    // 👉 CHALLENGE 5
+    // 🧠 The advancedBatteryCare function implemented above is being used to display a widget on the web page
+    // However, some HTML elements are missing an id attribute that would allow the JavaScript code to find them
+    // Visit the following website: `https://bloominstituteoftechnology.github.io/W_U1_S1_sprint_challenge_v2/`
+    //    * Interact with the site to see the widget in action
+    //    * Use Chrome Dev Tools/Elements tab to find the missing ids
+    //    * Add the missing ids to the corresponding HTML elements in this document and make the widget work
